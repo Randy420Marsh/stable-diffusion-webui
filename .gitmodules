@@ -1,0 +1,57 @@
+[submodule "extensions/sd-webui-llul"]
+	path = extensions/sd-webui-llul
+	url = https://github.com/Randy420Marsh/sd-webui-llul.git
+[submodule "extensions/SD-latent-mirroring"]
+	path = extensions/SD-latent-mirroring
+	url = https://github.com/Randy420Marsh/SD-latent-mirroring.git
+[submodule "extensions/a1111-sd-webui-haku-img"]
+	path = extensions/a1111-sd-webui-haku-img
+	url = https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
+[submodule "extensions/a1111-sd-webui-lycoris"]
+	path = extensions/a1111-sd-webui-lycoris
+	url = https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git
+[submodule "extensions/batch-face-swap"]
+	path = extensions/batch-face-swap
+	url = https://github.com/Randy420Marsh/batch-face-swap.git
+[submodule "extensions/gif2gif"]
+	path = extensions/gif2gif
+	url = https://github.com/Randy420Marsh/gif2gif.git
+[submodule "extensions/multi-subject-render"]
+	path = extensions/multi-subject-render
+	url = https://github.com/Randy420Marsh/multi-subject-render.git
+[submodule "extensions/openOutpaint-webUI-extension"]
+	path = extensions/openOutpaint-webUI-extension
+	url = https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git
+[submodule "extensions/sd-dynamic-thresholding"]
+	path = extensions/sd-dynamic-thresholding
+	url = https://github.com/Randy420Marsh/sd-dynamic-thresholding.git
+[submodule "extensions/sd-extension-steps-animation"]
+	path = extensions/sd-extension-steps-animation
+	url = https://github.com/Randy420Marsh/sd-extension-steps-animation.git
+[submodule "extensions/sd-webui-3d-open-pose-editor"]
+	path = extensions/sd-webui-3d-open-pose-editor
+	url = https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git
+[submodule "extensions/sd-webui-ar"]
+	path = extensions/sd-webui-ar
+	url = https://github.com/Randy420Marsh/sd-webui-ar.git
+[submodule "extensions/sd-webui-controlnet"]
+	path = extensions/sd-webui-controlnet
+	url = https://github.com/Randy420Marsh/sd-webui-controlnet.git
+[submodule "extensions/sd-webui-model-converter"]
+	path = extensions/sd-webui-model-converter
+	url = https://github.com/Randy420Marsh/sd-webui-model-converter.git
+[submodule "extensions/sd_save_intermediate_images"]
+	path = extensions/sd_save_intermediate_images
+	url = https://github.com/Randy420Marsh/sd_save_intermediate_images.git
+[submodule "extensions/stable-diffusion-webui-rembg"]
+	path = extensions/stable-diffusion-webui-rembg
+	url = https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git
+[submodule "extensions/stable-diffusion-webui-sonar"]
+	path = extensions/stable-diffusion-webui-sonar
+	url = https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
+[submodule "extensions/ultimate-upscale-for-automatic1111"]
+	path = extensions/ultimate-upscale-for-automatic1111
+	url = https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
+[submodule "extensions/video_loopback_for_webui"]
+	path = extensions/video_loopback_for_webui
+	url = https://github.com/Randy420Marsh/video_loopback_for_webui.git
