@@ -17,6 +17,10 @@ AUTOMATIC1111_WEBUI="AUTOMATIC1111"
 
 ##########################################
 
+# python3 executable
+python_cmd="./Python-3.10.12/python"
+
+
 cd $PWD
 
 USER="$USER"
