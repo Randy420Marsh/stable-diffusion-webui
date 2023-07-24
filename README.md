@@ -1,3 +1,5 @@
+git clone --recurse-submodules -j8 --branch extension-submodules https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111
+
 Custom branch with extension submodules to save some time...
 
 git submodule status --recursive
@@ -8,13 +10,13 @@ git submodule status --recursive
  b6fdff6549f79dbfb924c150dd54a9642164e876 extensions/batch-face-swap (heads/main)
  5121851e3941c420253f3a20a0f8e49bed86f0bb extensions/gif2gif (heads/main)
  03427e26bebdc6da0ccfb749bf3c4e7e33d7458b extensions/multi-subject-render (heads/main)
- 8502c5d891b38020abc8d1f472a36580265ab3a4 extensions/openOutpaint-webUI-extension (heads/main)
- e04dd2ee179f6514f9ddf1ff4c49015fa0ac9061 extensions/openOutpaint-webUI-extension/app (heads/main)
+ 8502c5d891b38020abc8d1f472a36580265ab3a4 extensions/openOutpaint-webUI-extension (8502c5d)
+ e04dd2ee179f6514f9ddf1ff4c49015fa0ac9061 extensions/openOutpaint-webUI-extension/app (remotes/origin/controlnet_inpaint-2-ge04dd2e)
  27700fddf866e0f0e1f13e9fb4a1dead326d43d3 extensions/sd-dynamic-thresholding (heads/main)
  acac7f166d5613ebfddac4c0a286ba2e5f7f29d1 extensions/sd-extension-steps-animation (heads/main)
  f2d5aac51d891bc5f266b1549f3cf4495fc52160 extensions/sd-webui-3d-open-pose-editor (heads/main)
  04ee2c6c60ca4534ab7f2d22518a3c5d2001fe83 extensions/sd-webui-ar (heads/main)
- 07bed6ccf8a468a45b2833cfdadc749927cbd575 extensions/sd-webui-controlnet (heads/main)
+ 07bed6ccf8a468a45b2833cfdadc749927cbd575 extensions/sd-webui-controlnet (07bed6c)
  e1123778577c5d1b55717601502d873bc8a6b041 extensions/sd-webui-llul (631059c-12-ge112377)
  2a3834d769d6c71b2125b56abe6b378ef75a6728 extensions/sd-webui-model-converter (heads/main)
  8115a847d35312fd65d6acdb367f3addc22d0eb5 extensions/sd_save_intermediate_images (heads/main)
@@ -22,9 +24,6 @@ git submodule status --recursive
  e9e16c996c23cb40e7525743b91cb0bbf55a4907 extensions/stable-diffusion-webui-sonar (heads/main)
  c99f382b31509b87b4d512e70e9caf08ae7a079f extensions/ultimate-upscale-for-automatic1111 (heads/main)
  53a340cf5a3d8000c9f8d934fa1e7464bc733244 extensions/video_loopback_for_webui (heads/main)
-
-
-
 
 # Stable Diffusion web UI
 A browser interface based on Gradio library for Stable Diffusion.
