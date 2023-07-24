@@ -3,6 +3,54 @@
 # Uncomment and change the variables below to your need:#
 #########################################################
 
+#Uncomment as needed...
+
+##########################################
+
+AUTOMATIC1111_WEBUI="AUTOMATIC1111"
+
+##########################################
+
+# python3 executable
+python_cmd="./venv/bin/python3"
+
+cd $PWD
+
+USER="$USER"
+
+export USER=$USER
+
+echo "Current User: $USER"
+
+#Custom AUTOMATIC1111 webui root path
+
+SD_ROOT_PATH="$PWD"
+
+export SD_ROOT_PATH="$PWD"
+
+echo "Current active SD root path:"
+
+echo $SD_ROOT_PATH
+
+export SAFETENSORS_FAST_GPU=1
+
+export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:512
+
+##########################################
+
+#echo "loading models from default path:"
+
+#export COMMANDLINE_ARGS="--port 4433 --opt-split-attention --theme=dark --precision autocast --api"
+
+##########################################
+
+echo "loading models from custom path:"
+
+export COMMANDLINE_ARGS="--no-download-sd-model --port 4433 --opt-split-attention --theme=dark --precision autocast --api --lora-dir "$SD_ROOT_PATH/models/Lora" --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --medvram"
+
+##########################################
+
+
 # Install directory without trailing slash
 #install_dir="/home/$(whoami)"
 
@@ -11,9 +59,6 @@
 
 # Commandline arguments for webui.py, for example: export COMMANDLINE_ARGS="--medvram --opt-split-attention"
 #export COMMANDLINE_ARGS=""
-
-# python3 executable
-#python_cmd="python3"
 
 # git executable
 #export GIT="git"
@@ -25,7 +70,7 @@
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-#export TORCH_COMMAND="pip install torch==1.12.1+cu113 --extra-index-url https://download.pytorch.org/whl/cu113"
+export TORCH_COMMAND="pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"
