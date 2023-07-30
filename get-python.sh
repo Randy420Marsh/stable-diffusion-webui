@@ -28,6 +28,7 @@ function verify_file {
 # Check if the file exists and matches the checksum
 if verify_file; then
     echo "Using the existing file."
+    tar -xf Python-3.10.12.tar.xz
 else
     # Download the file since it either doesn't exist or checksum mismatched
     echo "Downloading the file..."
