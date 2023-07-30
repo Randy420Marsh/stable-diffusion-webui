@@ -1,7 +1,8 @@
 #!/bin/bash
-#########################################################
-# Uncomment and change the variables below to your need:#
-#########################################################
+#################################################
+# Please do not make any changes to this file,  #
+# change the variables in webui-user.sh instead #
+#################################################
 
 #Uncomment as needed...
 
@@ -14,15 +15,9 @@ AUTOMATIC1111_WEBUI="AUTOMATIC1111"
 # python3 executable
 python_cmd="./venv/bin/python3"
 
+##########################################
+
 cd $PWD
-
-USER="$USER"
-
-export USER=$USER
-
-echo "Current User: $USER"
-
-#Custom AUTOMATIC1111 webui root path
 
 SD_ROOT_PATH="$PWD"
 
@@ -31,6 +26,16 @@ export SD_ROOT_PATH="$PWD"
 echo "Current active SD root path:"
 
 echo $SD_ROOT_PATH
+
+##########################################
+
+USER="$USER"
+
+export USER=$USER
+
+echo "Current User: $USER"
+
+#Custom AUTOMATIC1111 webui root path
 
 export SAFETENSORS_FAST_GPU=1
 
