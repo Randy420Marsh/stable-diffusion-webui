@@ -13,7 +13,7 @@ AUTOMATIC1111_WEBUI="AUTOMATIC1111"
 ##########################################
 
 # python3 executable
-python_cmd="./venv/bin/python3"
+python_cmd="./venv/bin/python"
 
 ##########################################
 
