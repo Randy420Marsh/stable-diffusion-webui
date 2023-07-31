@@ -1,6 +1,7 @@
-git clone and run below
 
-cd .. && ./AUTOMATIC1111/./fast-setup.sh
+git clone https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111
+
+./AUTOMATIC1111/./fast-setup.sh
 
 for fast setup on linux
 
