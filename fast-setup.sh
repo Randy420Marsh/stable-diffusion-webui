@@ -15,7 +15,7 @@ echo "Current User: $USER"
 repository_url="https://github.com/Randy420Marsh/stable-diffusion-webui.git"
 local_path="$PWD"
 
-python_path="$PWD/Python-3.10.12"
+python_path="$PWS/Python-3.10.12"
 
 #if [ -d "$local_path" ]; then
 #    # If the directory exists, perform a git pull
@@ -38,7 +38,7 @@ python_path="$PWD/Python-3.10.12"
 
 #Custom AUTOMATIC1111 webui root path
 
-SD_ROOT_PATH="$local_path/$AUTOMATIC1111_WEBUI"
+SD_ROOT_PATH="$local_path"
 
 echo "SD models root path:"
 
@@ -62,7 +62,7 @@ else
 #    ./Python-3.10.12/python -m venv venv
 #    source ./venv/bin/activate
 #    python -m pip install --upgrade pip
-    cd $SD_ROOT_PATH
+    cd "$SD_ROOT_PATH"
 fi
 
 echo "System python version:"
@@ -70,4 +70,4 @@ python --version
 ./Python-3.10.12/python -m venv venv
 source ./venv/bin/activate
 python -m pip install --upgrade pip
-cd $SD_ROOT_PATH
+cd "$SD_ROOT_PATH"
