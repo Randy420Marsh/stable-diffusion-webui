@@ -23,9 +23,9 @@ fi
 
 # Read variables from webui-user.sh
 # shellcheck source=/dev/null
-if [[ -f "$SCRIPT_DIR"/webui-user.sh ]]
+if [[ -f "$SCRIPT_DIR"/launch.sh ]]
 then
-    source "$SCRIPT_DIR"/webui-user.sh
+    source "$SCRIPT_DIR"/launch.sh
 fi
 
 # Set defaults
@@ -38,7 +38,7 @@ fi
 # Name of the subdirectory (defaults to stable-diffusion-webui)
 if [[ -z "${clone_dir}" ]]
 then
-    clone_dir="stable-diffusion-webui"
+    clone_dir="AUTOMATIC1111"
 fi
 
 # python3 executable
