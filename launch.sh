@@ -5,7 +5,7 @@
 #################################################
 
 #Uncomment as needed...
-
+#and change the webui.sh to point to this file instead of webui-user.sh
 ##########################################
 
 AUTOMATIC1111_WEBUI="AUTOMATIC1111"
