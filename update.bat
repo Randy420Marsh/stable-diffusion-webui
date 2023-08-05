@@ -94,3 +94,4 @@ IF exist video_loopback_for_webui (cd %EXTENSIONS_DIR%\video_loopback_for_webui 
 cd %AUTOMATIC1111_DIR%
 
 echo "Update/install finished..."
+pause
