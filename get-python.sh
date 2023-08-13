@@ -15,6 +15,7 @@ function verify_file {
         local_checksum=$(sha256sum "$LOCAL_FILE" | awk '{print $1}')
         if [[ "$local_checksum" == "$EXPECTED_CHECKSUM" ]]; then
             echo "Checksum verified. File is valid."
+            tar -xf Python-3.10.12.tar.xz
             return 0
         else
             echo "Checksum mismatch. Redownloading the file."
