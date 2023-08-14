@@ -12,7 +12,7 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist ./venv (call .\venv\scripts\activate.bat)  ELSE (.\Python-3.10.12\python -m venv venv && call .\venv\scripts\activate.bat)
+IF exist ./venv (call .\venv\scripts\activate.bat) else (python -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
@@ -34,7 +34,10 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 pip install xformers
 
-cd %EXTRENSIONS_DIR%
+cd %EXTENSIONS_DIR%
+dir
+echo We should be in extensions dir...
+pause
 IF exist sd-webui-llul (cd %EXTENSIONS_DIR%\sd-webui-llul && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-llul.git)
 cd %EXTRENSIONS_DIR%
 IF exist SD-latent-mirroring (cd %EXTENSIONS_DIR%\SD-latent-mirroring && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/SD-latent-mirroring.git)
