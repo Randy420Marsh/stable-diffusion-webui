@@ -28,7 +28,7 @@ pip install -r requirements.txt
 
 pip install -r requirements_versions.txt
 
-::#pip uninstall torch torchvision xformers
+REM pip uninstall torch torchvision xformers
 
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
@@ -38,43 +38,46 @@ cd %EXTENSIONS_DIR%
 dir
 echo We should be in extensions dir...
 pause
-IF exist sd-webui-llul (cd %EXTENSIONS_DIR%\sd-webui-llul && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-llul.git)
-cd %EXTRENSIONS_DIR%
-IF exist SD-latent-mirroring (cd %EXTENSIONS_DIR%\SD-latent-mirroring && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/SD-latent-mirroring.git)
-cd %EXTRENSIONS_DIR%
-IF exist a1111-sd-webui-haku-img (cd %EXTENSIONS_DIR%\a1111-sd-webui-haku-img && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git)
-cd %EXTRENSIONS_DIR%
-IF exist a1111-sd-webui-lycoris (cd %EXTENSIONS_DIR%\a1111-sd-webui-lycoris && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git)
-cd %EXTRENSIONS_DIR%
-IF exist batch-face-swap (cd %EXTENSIONS_DIR%\batch-face-swap && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/batch-face-swap.git)
-cd %EXTRENSIONS_DIR%
-IF exist gif2gif (cd %EXTENSIONS_DIR%\gif2gif && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/gif2gif.git)
-cd %EXTRENSIONS_DIR%
-IF exist multi-subject-render (cd %EXTENSIONS_DIR%\multi-subject-render && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/multi-subject-render.git)
-cd %EXTRENSIONS_DIR%
-IF exist openOutpaint-webUI-extension (cd %EXTENSIONS_DIR%\openOutpaint-webUI-extension && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-dynamic-thresholding (cd %EXTENSIONS_DIR%\sd-dynamic-thresholding && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-dynamic-thresholding.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-extension-steps-animation (cd %EXTENSIONS_DIR%\sd-extension-steps-animation && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-extension-steps-animation.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-webui-3d-open-pose-editor (cd %EXTENSIONS_DIR%\sd-webui-3d-open-pose-editor && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-webui-ar (cd %EXTENSIONS_DIR%\sd-webui-ar && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-ar.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-webui-controlnet (cd %EXTENSIONS_DIR%\sd-webui-controlnet && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-controlnet.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd-webui-model-converter (cd %EXTENSIONS_DIR%\sd-webui-model-converter && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git)
-cd %EXTRENSIONS_DIR%
-IF exist sd_save_intermediate_images (cd %EXTENSIONS_DIR%\sd_save_intermediate_images && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/sd_save_intermediate_images.git)
-cd %EXTRENSIONS_DIR%
-IF exist stable-diffusion-webui-rembg (cd %EXTENSIONS_DIR%\stable-diffusion-webui-rembg && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git)
-cd %EXTRENSIONS_DIR%
-IF exist stable-diffusion-webui-sonar(cd %EXTENSIONS_DIR%\stable-diffusion-webui-sonar && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git)
-cd %EXTRENSIONS_DIR%
-IF exist ultimate-upscale-for-automatic1111 (cd %EXTENSIONS_DIR%\ultimate-upscale-for-automatic1111 && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git)
-cd %EXTRENSIONS_DIR%
-IF exist video_loopback_for_webui (cd %EXTENSIONS_DIR%\video_loopback_for_webui && git pull) ELSE (cd %EXTRENSIONS_DIR% && git clone https://github.com/Randy420Marsh/video_loopback_for_webui.git)
+
+set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
+set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
+set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
+set "repos[3]=https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git"
+set "repos[4]=https://github.com/Randy420Marsh/batch-face-swap.git"
+set "repos[5]=https://github.com/Randy420Marsh/gif2gif.git"
+set "repos[6]=https://github.com/Randy420Marsh/multi-subject-render.git"
+set "repos[7]=https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git"
+set "repos[8]=https://github.com/Randy420Marsh/sd-dynamic-thresholding.git"
+set "repos[9]=https://github.com/Randy420Marsh/sd-extension-steps-animation.git"
+set "repos[10]=https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git"
+set "repos[11]=https://github.com/Randy420Marsh/sd-webui-ar.git"
+set "repos[12]=https://github.com/Randy420Marsh/sd-webui-controlnet.git"
+set "repos[13]=https://github.com/Randy420Marsh/sd-webui-model-converter.git"
+set "repos[14]=https://github.com/Randy420Marsh/sd_save_intermediate_images.git"
+set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git"
+set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
+set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
+set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
+
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
+    set "repo_url=!repos[%%i]!"
+    for %%j in ("!repo_url!") do (
+        set "repo_name=%%~nj"
+        
+        if exist "!repo_name!%~1" (
+            echo Updating !repo_name!...
+            pushd "!repo_name!%~1"
+            git pull
+            popd
+        ) else (
+            echo Cloning !repo_name!...
+            git clone "%%j" "!repo_name!%~1"
+        )
+    )
+)
+
+endlocal
+
 
 cd %AUTOMATIC1111_DIR%
 
