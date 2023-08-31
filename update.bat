@@ -12,7 +12,7 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist ./venv (call .\venv\scripts\activate.bat) else (python -m venv venv && call .\venv\scripts\activate.bat)
+IF exist ./venv (call .\venv\scripts\activate.bat) else (C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
@@ -42,7 +42,7 @@ pause
 set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
 set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
 set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
-set "repos[3]=https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git"
+::set "repos[3]=https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git"
 set "repos[4]=https://github.com/Randy420Marsh/batch-face-swap.git"
 set "repos[5]=https://github.com/Randy420Marsh/gif2gif.git"
 set "repos[6]=https://github.com/Randy420Marsh/multi-subject-render.git"
@@ -59,7 +59,7 @@ set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
+for %%i in (0 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
@@ -77,7 +77,6 @@ for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
 )
 
 endlocal
-
 
 cd %AUTOMATIC1111_DIR%
 
