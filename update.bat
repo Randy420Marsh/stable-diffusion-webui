@@ -12,7 +12,7 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist ./venv (call .\venv\scripts\activate.bat) else (C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && call .\venv\scripts\activate.bat)
+IF exist .\venv (call .\venv\scripts\activate.bat) else (C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
@@ -37,7 +37,6 @@ pip install xformers
 cd %EXTENSIONS_DIR%
 dir
 echo We should be in extensions dir...
-pause
 
 set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
 set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
@@ -76,9 +75,13 @@ for %%i in (0 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
     )
 )
 
-endlocal
-
 cd %AUTOMATIC1111_DIR%
+
+IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" rembg) else (echo "Nothing to do rembg does not exist...")
+
+::IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" && python .\extensions\stable-diffusion-webui-rembg\install.py) else (echo "Nothing to do rembg does not exist...")
+
+endlocal
 
 echo "Update/install finished..."
 pause
