@@ -1,11 +1,11 @@
 @echo off
 
-set current_path=%CD%
+SET current_path=%CD%
 
 cd %current_path%
 
 setlocal enabledelayedexpansion
 
-set "python=python"
+set "python=C:\Python-3.10\PCbuild\amd64\python.exe"
 
-IF exist ./venv (cmd /k call %current_path%\venv\scripts\activate.bat)  ELSE (cmd /k python -m venv venv && cmd /k call .%current_path%\venv\scripts\activate.bat)
+IF exist ./venv (cmd /k call .\venv\scripts\activate.bat)  ELSE (cmd /k C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && cmd /k call .\venv\scripts\activate.bat)
