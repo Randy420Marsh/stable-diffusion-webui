@@ -41,7 +41,7 @@ echo We should be in extensions dir...
 set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
 set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
 set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
-::set "repos[3]=https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git"
+set "repos[3]=https://github.com/Randy420Marsh/sd-webui-stablesr.git"
 set "repos[4]=https://github.com/Randy420Marsh/batch-face-swap.git"
 set "repos[5]=https://github.com/Randy420Marsh/gif2gif.git"
 set "repos[6]=https://github.com/Randy420Marsh/multi-subject-render.git"
@@ -57,8 +57,9 @@ set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git
 set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
+set "repos[18]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
 
-for %%i in (0 1 2 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18) do (
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
