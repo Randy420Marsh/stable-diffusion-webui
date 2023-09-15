@@ -12,7 +12,7 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist .\venv (call .\venv\scripts\activate.bat) else (C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && call .\venv\scripts\activate.bat)
+IF exist .\venv (call .\venv\scripts\activate.bat) else (python -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
