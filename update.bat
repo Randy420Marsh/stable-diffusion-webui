@@ -49,17 +49,17 @@ set "repos[7]=https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git"
 set "repos[8]=https://github.com/Randy420Marsh/sd-dynamic-thresholding.git"
 set "repos[9]=https://github.com/Randy420Marsh/sd-extension-steps-animation.git"
 set "repos[10]=https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git"
-set "repos[11]=https://github.com/Randy420Marsh/sd-webui-ar.git"
+REM set "repos[11]=https://github.com/Randy420Marsh/sd-webui-ar.git"
 set "repos[12]=https://github.com/Randy420Marsh/sd-webui-controlnet.git"
 set "repos[13]=https://github.com/Randy420Marsh/sd-webui-model-converter.git"
 set "repos[14]=https://github.com/Randy420Marsh/sd_save_intermediate_images.git"
 set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git"
-set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
+REM set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
-set "repos[18]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
+set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19) do (
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
