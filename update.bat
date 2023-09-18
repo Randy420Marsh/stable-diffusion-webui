@@ -12,13 +12,19 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist .\venv (call .\venv\scripts\activate.bat) else (python -m venv venv && call .\venv\scripts\activate.bat)
+IF exist ./venv (call .\venv\scripts\activate.bat) ELSE ("C:\Python-3.10\PCbuild\amd64\python.exe" -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
 pause
 
 python.exe -m pip install --upgrade pip
+
+::#pip uninstall torch torchvision xformers
+
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+pip install xformers --pre
 
 cd %AUTOMATIC1111_DIR%
 
