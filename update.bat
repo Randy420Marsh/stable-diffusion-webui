@@ -12,7 +12,7 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist ./venv (call .\venv\scripts\activate.bat) ELSE ("C:\Python-3.10\PCbuild\amd64\python.exe" -m venv venv && call .\venv\scripts\activate.bat)
+IF exist ./venv (call .\venv\scripts\activate.bat) ELSE ("python" -m venv venv && call .\venv\scripts\activate.bat)
 
 python --version
 
@@ -64,8 +64,11 @@ REM set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
 set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
+set "repos[20]=https://github.com/Randy420Marsh/sd-webui-openpose-editor.git"
+set "repos[21]=https://github.com/Randy420Marsh/adetailer"
+set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19) do (
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
@@ -84,7 +87,11 @@ for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19) do (
 
 cd %AUTOMATIC1111_DIR%
 
+
+
 IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" rembg) else (echo "Nothing to do rembg does not exist...")
+
+IF exist .\extensions\sd-webui-reactor (pip install -r  .\extensions\sd-webui-reactor\requirements.txt) else (echo "Nothing to do sd-webui-reactor does not exist...")
 
 ::IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" && python .\extensions\stable-diffusion-webui-rembg\install.py) else (echo "Nothing to do rembg does not exist...")
 
