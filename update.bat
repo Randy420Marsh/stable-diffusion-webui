@@ -88,12 +88,9 @@ for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22) do (
 cd %AUTOMATIC1111_DIR%
 
 
-
-IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" rembg) else (echo "Nothing to do rembg does not exist...")
+IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall opencv-python-headless watchdog rembg asyncer filetype imagehash && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.38" "asyncer>=0.0.2" "filetype>=1.2.0" "imagehash>=4.3.1") else (echo "Nothing to do rembg does not exist...")
 
 IF exist .\extensions\sd-webui-reactor (pip install -r  .\extensions\sd-webui-reactor\requirements.txt) else (echo "Nothing to do sd-webui-reactor does not exist...")
-
-::IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" && python .\extensions\stable-diffusion-webui-rembg\install.py) else (echo "Nothing to do rembg does not exist...")
 
 endlocal
 
