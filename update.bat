@@ -67,8 +67,9 @@ set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-auto
 set "repos[20]=https://github.com/Randy420Marsh/sd-webui-openpose-editor.git"
 set "repos[21]=https://github.com/Randy420Marsh/adetailer"
 set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
+set "repos[23]=https://github.com/Randy420Marsh/model-keyword.git"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22) do (
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22 23) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
