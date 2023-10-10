@@ -76,7 +76,7 @@ done
 cd $AUTOMATIC1111_DIR
 
 if [ -d "./extensions/stable-diffusion-webui-rembg" ]; then
-    pip uninstall opencv-python-headless watchdog rembg asyncer filetype imagehash
+    pip uninstall -y opencv-python-headless watchdog rembg asyncer filetype imagehash
     pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.38" "asyncer>=0.0.2" "filetype>=1.2.0" "imagehash>=4.3.1"
 else
     echo "Nothing to do rembg does not exist..."

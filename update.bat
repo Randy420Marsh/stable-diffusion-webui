@@ -16,8 +16,6 @@ IF exist ./venv (call .\venv\scripts\activate.bat) ELSE ("python" -m venv venv &
 
 python --version
 
-pause
-
 python.exe -m pip install --upgrade pip
 
 ::#pip uninstall torch torchvision xformers
@@ -44,7 +42,7 @@ cd %EXTENSIONS_DIR%
 dir
 echo We should be in extensions dir...
 
-set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
+REM set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
 set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
 set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
 set "repos[3]=https://github.com/Randy420Marsh/sd-webui-stablesr.git"
@@ -69,7 +67,7 @@ set "repos[21]=https://github.com/Randy420Marsh/adetailer"
 set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
 set "repos[23]=https://github.com/Randy420Marsh/model-keyword.git"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22 23) do (
+for %%i in (1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22 23) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
@@ -89,7 +87,7 @@ for %%i in (0 1 2 3 4 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22 23) do (
 cd %AUTOMATIC1111_DIR%
 
 
-IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall opencv-python-headless watchdog rembg asyncer filetype imagehash && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.38" "asyncer>=0.0.2" "filetype>=1.2.0" "imagehash>=4.3.1") else (echo "Nothing to do rembg does not exist...")
+IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall -y opencv-python-headless watchdog rembg asyncer filetype imagehash && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.38" "asyncer>=0.0.2" "filetype>=1.2.0" "imagehash>=4.3.1") else (echo "Nothing to do rembg does not exist...")
 
 IF exist .\extensions\sd-webui-reactor (pip install -r  .\extensions\sd-webui-reactor\requirements.txt) else (echo "Nothing to do sd-webui-reactor does not exist...")
 
