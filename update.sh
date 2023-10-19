@@ -24,7 +24,7 @@ python -m pip install --upgrade pip
 
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
-pip install xformers --pre
+pip install xformers
 
 cd $AUTOMATIC1111_DIR
 
