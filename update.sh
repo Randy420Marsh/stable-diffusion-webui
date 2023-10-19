@@ -22,9 +22,11 @@ read -p "Press Enter to continue..."
 
 python -m pip install --upgrade pip
 
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+pip uninstall -y torch torchvision xformers
 
-pip install xformers
+pip install "torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
+
+pip install "xformers==0.0.22"
 
 cd $AUTOMATIC1111_DIR
 
