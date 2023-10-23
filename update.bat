@@ -52,7 +52,7 @@ set "repos[12]=https://github.com/Randy420Marsh/sd-webui-controlnet.git"
 set "repos[13]=https://github.com/Randy420Marsh/sd-webui-model-converter.git"
 set "repos[14]=https://github.com/Randy420Marsh/sd_save_intermediate_images.git"
 set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git"
-REM set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
+set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
 set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
@@ -61,7 +61,7 @@ set "repos[21]=https://github.com/Randy420Marsh/adetailer"
 set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
 set "repos[23]=https://github.com/Randy420Marsh/model-keyword.git"
 
-for %%i in (1 2 3 5 6 7 8 9 10 12 13 14 15 17 18 19 20 21 22 23) do (
+for %%i in (1 2 3 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20 21 22 23) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
