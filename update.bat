@@ -36,7 +36,7 @@ cd %EXTENSIONS_DIR%
 dir
 echo We should be in extensions dir...
 
-REM set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
+set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
 set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
 set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
 set "repos[3]=https://github.com/Randy420Marsh/sd-webui-stablesr.git"
@@ -61,7 +61,7 @@ set "repos[21]=https://github.com/Randy420Marsh/adetailer"
 set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
 set "repos[23]=https://github.com/Randy420Marsh/model-keyword.git"
 
-for %%i in (1 2 3 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20 21 22 23) do (
+for %%i in (0 1 2 3 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20 21 22 23) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
