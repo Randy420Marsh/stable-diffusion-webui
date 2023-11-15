@@ -11,7 +11,7 @@ echo "EXTENSIONS_DIR:"
 echo $EXTENSIONS_DIR
 
 if [ -d "./venv" ]; then
-    source ./venv/scripts/activate
+    source ./venv/bin/activate
 else
     python -m venv venv && source ./venv/scripts/activate
 fi
