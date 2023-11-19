@@ -13,7 +13,7 @@ echo $EXTENSIONS_DIR
 if [ -d "./venv" ]; then
     source ./venv/bin/activate
 else
-    python -m venv venv && source ./venv/scripts/activate
+    python3.10 -m venv venv && source ./venv/scripts/activate
 fi
 
 python --version
