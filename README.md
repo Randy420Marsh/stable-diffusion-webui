@@ -1,9 +1,9 @@
 # Stable Diffusion web UI
 A browser interface based on Gradio library for Stable Diffusion.
 
-git clone -b dev https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111
+git clone -b dev https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111-dev
 
-cd AUTOMATIC1111
+cd AUTOMATIC1111-dev
 
 ./fast-setup.sh
 
