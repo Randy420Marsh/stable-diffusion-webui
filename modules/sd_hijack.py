@@ -41,6 +41,7 @@ current_optimizer: sd_hijack_optimizations.SdOptimization = None
 ldm_original_forward = patches.patch(__file__, ldm.modules.diffusionmodules.openaimodel.UNetModel, "forward", sd_unet.UNetModel_forward)
 sgm_original_forward = patches.patch(__file__, sgm.modules.diffusionmodules.openaimodel.UNetModel, "forward", sd_unet.UNetModel_forward)
 
+
 def list_optimizers():
     new_optimizers = script_callbacks.list_optimizers_callback()
 
@@ -302,8 +303,6 @@ class StableDiffusionModelHijack:
         self.apply_circular(False)
         self.layers = None
         self.clip = None
-
-        sd_unet.original_forward = None
 
 
     def apply_circular(self, enable):
