@@ -1,6 +1,6 @@
 @echo off
 
-set "SD_ROOT_PATH=C://AI//stable-diffusion-webui-docker//data"
+set "SD_ROOT_PATH=E://AI//stable_diffusion_models_and_vae"
 
 set "PYTHON=python"
 set GIT=
