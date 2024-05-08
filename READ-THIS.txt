@@ -1,0 +1,10 @@
+add to below script to ~/.bashrc to launch scripts without closing current terminal window after execution
+
+source: https://superuser.com/questions/1701789/how-can-i-have-a-terminal-window-persist-beyond-the-script-it-was-opened-for-n
+---------------------------------
+if [ -f "$MORE_STARTUP" ]; then
+    . $MORE_STARTUP
+elif [ -n "$MORE_STARTUP" ]; then
+    echo "Warning! Could not run ${MORE_STARTUP}"
+fi
+---------------------------------
