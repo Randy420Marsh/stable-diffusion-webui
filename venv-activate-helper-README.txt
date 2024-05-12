@@ -15,3 +15,29 @@ fi
 
 source: https://superuser.com/questions/1701789/how-can-i-have-a-terminal-window-persist-beyond-the-script-it-was-opened-for-n
 
+then create venv-activate:
+
+###########
+#!/bin/bash
+cd $PWD
+source ./venv/bin/activate
+echo "venv activated"
+python --version
+###########
+
+and activate.sh:
+
+###########
+#!/bin/bash
+echo "Activating venv..."
+cd $PWD
+export MORE_STARTUP=$PWD/activate-venv
+exec bash
+###########
+
+Run: sudo chmod +x ./activate.sh
+to make it executable.
+./activate.sh should now activate the venv and display python version:D
+
+~~#/usr/bin/python --version~~
+~~#./venv/bin/python --version~~
