@@ -39,5 +39,6 @@ Run: sudo chmod +x ./activate.sh
 to make it executable.
 ./activate.sh should now activate the venv and display python version:D
 
-~~#/usr/bin/python --version~~
-~~#./venv/bin/python --version~~
+for reference...
+/usr/bin/python --version
+./venv/bin/python --version
