@@ -37,3 +37,5 @@ git clone https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
 git clone https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
 
 git clone https://github.com/Randy420Marsh/video_loopback_for_webui.git
+
+git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git
