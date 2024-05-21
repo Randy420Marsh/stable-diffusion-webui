@@ -39,3 +39,5 @@ git clone https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.gi
 git clone https://github.com/Randy420Marsh/video_loopback_for_webui.git
 
 git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git
+
+git clone https://github.com/Randy420Marsh/sd_civitai_extension.git
