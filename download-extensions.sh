@@ -6,7 +6,7 @@ git clone https://github.com/Randy420Marsh/SD-latent-mirroring.git
 
 git clone https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
 
-git clone https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git
+#git clone https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git
 
 git clone https://github.com/Randy420Marsh/batch-face-swap.git
 
