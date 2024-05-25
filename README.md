@@ -7,6 +7,9 @@ cd AUTOMATIC1111
 
 for fast setup on linux
 
+if using cpu only this is a good read:
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/10514
+
 # Stable Diffusion web UI
 A web interface for Stable Diffusion, implemented using Gradio library.
 
