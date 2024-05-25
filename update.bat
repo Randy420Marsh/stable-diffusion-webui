@@ -12,7 +12,35 @@ set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
 echo EXTENSIONS_DIR: 
 echo %EXTENSIONS_DIR%
 
-IF exist .\venv (call .\venv\scripts\activate.bat) else (C:\Python-3.10\PCbuild\amd64\python.exe -m venv venv && call .\venv\scripts\activate.bat)
+:: Check for NVIDIA GPU
+set "gpu_info="
+for /f "tokens=*" %%i in ('wmic path win32_VideoController get name ^| find "NVIDIA"') do (
+    set "gpu_info=%%i"
+)
+
+if defined gpu_info (
+    echo NVIDIA GPU detected: %gpu_info%
+) else (
+    echo No NVIDIA GPU detected.
+)
+
+:: Prompt user for choice
+:choice
+set /p "user_choice=Do you want to install the GPU or CPU version (G/C)? "
+
+if /i "%user_choice%"=="G" (
+    set "venv_dir=venv"
+    set "install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118"
+) else if /i "%user_choice%"=="C" (
+    set "venv_dir=venv-cpu"
+    set "install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu"
+) else (
+    echo Invalid choice. Please enter G for GPU version or C for CPU version.
+    goto choice
+)
+
+:: Create and activate virtual environment
+IF exist .\%venv_dir% (call .\%venv_dir%\scripts\activate.bat) else (python.exe -m venv %venv_dir% && call .\%venv_dir%\scripts\activate.bat)
 
 python --version
 
@@ -30,7 +58,8 @@ pip install -r requirements_versions.txt
 
 REM pip uninstall torch torchvision xformers
 
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+:: Install chosen version of torch and torchvision
+%install_cmd%
 
 pip install xformers
 
@@ -57,9 +86,14 @@ set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git
 set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
 set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
 set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
-set "repos[18]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
+set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
+set "repos[20]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
+set "repos[21]=https://github.com/Randy420Marsh/sd-webui-model-converter.git"
+set "repos[22]=https://github.com/Randy420Marsh/sd_civitai_extension.git"
+set "repos[23]=https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git"
+set "repos[24]=https://github.com/Randy420Marsh/webui-stability-api.git"
 
-for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19) do (
+for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24) do (
     set "repo_url=!repos[%%i]!"
     for %%j in ("!repo_url!") do (
         set "repo_name=%%~nj"
@@ -79,8 +113,6 @@ for %%i in (0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19) do (
 cd %AUTOMATIC1111_DIR%
 
 IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" rembg) else (echo "Nothing to do rembg does not exist...")
-
-::IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall watchdog opencv-python-headless && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" && python .\extensions\stable-diffusion-webui-rembg\install.py) else (echo "Nothing to do rembg does not exist...")
 
 endlocal
 

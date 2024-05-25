@@ -15,7 +15,7 @@ echo "Current User: $USER"
 repository_url="https://github.com/Randy420Marsh/stable-diffusion-webui.git"
 local_path="$PWD"
 
-python_path="$PWS/Python-3.10.12"
+python_path="$PWD/Python-3.10.12"
 
 #if [ -d "$local_path" ]; then
 #    # If the directory exists, perform a git pull

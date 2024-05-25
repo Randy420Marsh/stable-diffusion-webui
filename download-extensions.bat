@@ -6,8 +6,6 @@ git clone https://github.com/Randy420Marsh/SD-latent-mirroring.git
 
 git clone https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
 
-REM git clone https://github.com/Randy420Marsh/a1111-sd-webui-lycoris.git
-
 git clone https://github.com/Randy420Marsh/batch-face-swap.git
 
 git clone https://github.com/Randy420Marsh/gif2gif.git
@@ -36,6 +34,8 @@ git clone https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
 
 git clone https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
 
+git clone https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git
+
 git clone https://github.com/Randy420Marsh/video_loopback_for_webui.git
 
 git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git
@@ -45,4 +45,3 @@ git clone https://github.com/Randy420Marsh/sd_civitai_extension.git
 git clone https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
 
 git clone https://github.com/Randy420Marsh/webui-stability-api.git
-
