@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+echo "This script is updated 2024..."
+
+git pull
+
+python_cmd="python3.10"
 
 AUTOMATIC1111_DIR=$(pwd)
 
@@ -21,54 +25,61 @@ fi
 
 # Prompt user for choice
 while true; do
-    read -p "Do you want to install the GPU or CPU version (G/C)? " user_choice
+    read -p "Do you want to update the GPU or CPU version (G/C)? " user_choice
 
     case $user_choice in
-        [Gg]* ) 
+        [Gg]* )
             venv_dir="venv"
             install_cmd="pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118"
+            install_xformers=true
             break
             ;;
-        [Cc]* ) 
+        [Cc]* )
             venv_dir="venv-cpu"
             install_cmd="pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu"
+            install_xformers=false
             break
             ;;
-        * ) 
+        * )
             echo "Invalid choice. Please enter G for GPU version or C for CPU version."
             ;;
     esac
 done
 
-sudo apt install -y libjemalloc-dev intel-mkl gperftools
+
+$python_cmd --version
+
+read -p "Press Enter to continue..."
+
+sudo apt install -y libjemalloc-dev intel-mkl gperf
 
 # Create and activate virtual environment
 if [ -d "./$venv_dir" ]; then
     source ./$venv_dir/bin/activate
 else
-    python3 -m venv $venv_dir
+    $python_cmd -m venv $venv_dir
     source ./$venv_dir/bin/activate
 fi
 
-python --version
-
-pip install --upgrade pip
+$python_cmd -m pip install --upgrade pip
 
 cd "$AUTOMATIC1111_DIR"
 
-git pull
-
-pip install -r requirements.txt
-pip install -r requirements_versions.txt
+pip uninstall -y torch torchvision xformers
 
 # Install chosen version of torch and torchvision
 $install_cmd
 
-pip install xformers
+pip install -r requirements.txt
+pip install -r requirements_versions.txt
+
+if [ "$install_xformers" = true ]; then
+    pip install xformers
+fi
 
 cd "$EXTENSIONS_DIR"
 ls
-echo "We should be in extensions dir..."
+echo "We should now be inside the extensions directory..."
 
 repos=(
     "https://github.com/Randy420Marsh/sd-webui-llul.git"
@@ -116,7 +127,7 @@ cd "$AUTOMATIC1111_DIR"
 
 if [ -d "./extensions/stable-diffusion-webui-rembg" ]; then
     pip uninstall -y watchdog opencv-python-headless
-    pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" rembg
+    pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
 else
     echo "Nothing to do rembg does not exist..."
 fi
