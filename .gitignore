@@ -1,11 +1,12 @@
-__pycache__
+__pycache__/
 *.ckpt
 *.safetensors
 *.pth
 /ESRGAN/*
 /SwinIR/*
 /repositories
-/venv
+/venv/
+/venv-cpu/
 /tmp
 /model.ckpt
 /models/**/*
