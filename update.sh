@@ -46,7 +46,6 @@ while true; do
     esac
 done
 
-
 $python_cmd --version
 
 read -p "Press Enter to continue..."
