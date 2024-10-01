@@ -1,11 +1,13 @@
-__pycache__
+__pycache__/
 *.ckpt
 *.safetensors
 *.pth
+.DS_Store
 /ESRGAN/*
 /SwinIR/*
 /repositories
-/venv
+/venv/
+/venv-cpu/
 /tmp
 /model.ckpt
 /models/**/*
@@ -37,3 +39,7 @@ notification.mp3
 /node_modules
 /package-lock.json
 /.coverage*
+/test/test_outputs
+/cache
+trace.json
+/sysinfo-????-??-??-??-??.json

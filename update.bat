@@ -1,91 +1,124 @@
 @echo off
-
-setlocal enabledelayedexpansion
-
-set "AUTOMATIC1111_DIR=%CD%"
-
-echo AUTOMATIC1111_DIR: 
-echo %AUTOMATIC1111_DIR%
-
-set "EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions"
-
-echo EXTENSIONS_DIR: 
-echo %EXTENSIONS_DIR%
-
-IF exist ./venv (call .\venv\scripts\activate.bat) ELSE ("python" -m venv venv && call .\venv\scripts\activate.bat)
-
-python --version
-
-python.exe -m pip install --upgrade pip
-
-pip uninstall -y torch torchvision xformers
-
-pip install "torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
-
-pip install "xformers==0.0.22"
-
-cd %AUTOMATIC1111_DIR%
+echo This script is updated 2024...
 
 git pull
 
-pip install -r requirements.txt
+set python_cmd=python
 
+set AUTOMATIC1111_DIR=%cd%
+
+echo AUTOMATIC1111_DIR: %AUTOMATIC1111_DIR%
+
+set EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions
+
+echo EXTENSIONS_DIR: %EXTENSIONS_DIR%
+
+REM Check for NVIDIA GPU
+wmic path win32_VideoController get name | findstr /I "NVIDIA"
+if %errorlevel%==0 (
+    echo NVIDIA GPU detected.
+) else (
+    echo No NVIDIA GPU detected.
+)
+
+REM Prompt user for choice
+:choice
+set /p user_choice=Do you want to update the GPU or CPU version (G/C)? 
+if /I "%user_choice%"=="G" (
+    set venv_dir=venv
+    set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+    set install_xformers=true
+) else if /I "%user_choice%"=="C" (
+    set venv_dir=venv-cpu
+    set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+    set install_xformers=false
+) else (
+    echo Invalid choice. Please enter G for GPU version or C for CPU version.
+    goto choice
+)
+
+%python_cmd% --version
+
+pause
+
+REM Create and activate virtual environment
+if exist %venv_dir%\Scripts\activate (
+    call %venv_dir%\Scripts\activate
+) else (
+    %python_cmd% -m venv %venv_dir%
+    call %venv_dir%\Scripts\activate
+)
+
+%python_cmd% -m pip install --upgrade pip
+
+cd %AUTOMATIC1111_DIR%
+
+pip uninstall -y torch torchvision xformers
+
+REM Install chosen version of torch and torchvision
+%install_cmd%
+
+pip install -r requirements.txt
 pip install -r requirements_versions.txt
+
+if "%install_xformers%"=="true" (
+    pip install xformers
+)
 
 cd %EXTENSIONS_DIR%
 dir
-echo We should be in extensions dir...
+echo We should now be inside the extensions directory...
 
-set "repos[0]=https://github.com/Randy420Marsh/sd-webui-llul.git"
-set "repos[1]=https://github.com/Randy420Marsh/SD-latent-mirroring.git"
-set "repos[2]=https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git"
-set "repos[3]=https://github.com/Randy420Marsh/sd-webui-stablesr.git"
-REM set "repos[4]=https://github.com/Randy420Marsh/batch-face-swap.git"
-set "repos[5]=https://github.com/Randy420Marsh/gif2gif.git"
-set "repos[6]=https://github.com/Randy420Marsh/multi-subject-render.git"
-set "repos[7]=https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git"
-set "repos[8]=https://github.com/Randy420Marsh/sd-dynamic-thresholding.git"
-set "repos[9]=https://github.com/Randy420Marsh/sd-extension-steps-animation.git"
-set "repos[10]=https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git"
-REM set "repos[11]=https://github.com/Randy420Marsh/sd-webui-ar.git"
-set "repos[12]=https://github.com/Randy420Marsh/sd-webui-controlnet.git"
-set "repos[13]=https://github.com/Randy420Marsh/sd-webui-model-converter.git"
-set "repos[14]=https://github.com/Randy420Marsh/sd_save_intermediate_images.git"
-set "repos[15]=https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git"
-set "repos[16]=https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git"
-set "repos[17]=https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git"
-set "repos[18]=https://github.com/Randy420Marsh/video_loopback_for_webui.git"
-set "repos[19]=https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
-set "repos[20]=https://github.com/Randy420Marsh/sd-webui-openpose-editor.git"
-set "repos[21]=https://github.com/Randy420Marsh/adetailer"
-set "repos[22]=https://github.com/Randy420Marsh/sd-webui-reactor"
-set "repos[23]=https://github.com/Randy420Marsh/model-keyword.git"
+set repos=(
+    https://github.com/Randy420Marsh/sd-webui-llul.git
+    https://github.com/Randy420Marsh/SD-latent-mirroring.git
+    https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
+    https://github.com/Randy420Marsh/sd-webui-stablesr.git
+    https://github.com/Randy420Marsh/batch-face-swap.git
+    https://github.com/Randy420Marsh/gif2gif.git
+    https://github.com/Randy420Marsh/multi-subject-render.git
+    https://github.com/Randy420Marsh/openOutpaint-webUI-extension.git
+    https://github.com/Randy420Marsh/sd-dynamic-thresholding.git
+    https://github.com/Randy420Marsh/sd-extension-steps-animation.git
+    https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git
+    https://github.com/Randy420Marsh/sd-webui-ar.git
+    https://github.com/Randy420Marsh/sd-webui-controlnet.git
+    https://github.com/Randy420Marsh/sd-webui-model-converter.git
+    https://github.com/Randy420Marsh/sd_save_intermediate_images.git
+    https://github.com/Randy420Marsh/stable-diffusion-webui-rembg.git
+    https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
+    https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
+    https://github.com/Randy420Marsh/video_loopback_for_webui.git
+    https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git
+    https://github.com/Randy420Marsh/video_loopback_for_webui.git
+    https://github.com/Randy420Marsh/sd-webui-model-converter.git
+    https://github.com/Randy420Marsh/sd_civitai_extension.git
+    https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
+    https://github.com/Randy420Marsh/webui-stability-api.git
+)
 
-for %%i in (0 1 2 3 5 6 7 8 9 10 12 13 14 15 16 17 18 19 20 21 22 23) do (
-    set "repo_url=!repos[%%i]!"
-    for %%j in ("!repo_url!") do (
-        set "repo_name=%%~nj"
-        
-        if exist "!repo_name!%~1" (
-            echo Updating !repo_name!...
-            pushd "!repo_name!%~1"
-            git pull
-            popd
-        ) else (
-            echo Cloning !repo_name!...
-            git clone "%%j" "!repo_name!%~1"
-        )
+for %%i in %repos% do (
+    set repo=%%i
+    set repo_name=%repo:~%repo:rpath%\%.git
+    if exist %repo_name% (
+        echo Updating %repo_name%...
+        cd %repo_name%
+        git pull
+        cd ..
+    ) else (
+        echo Cloning %repo_name%...
+        git clone %repo% %repo_name%
     )
 )
 
 cd %AUTOMATIC1111_DIR%
 
+if exist .\extensions\stable-diffusion-webui-rembg (
+    pip uninstall -y watchdog opencv-python-headless
+    pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
+) else (
+    echo Nothing to do rembg does not exist...
+)
 
-IF exist .\extensions\stable-diffusion-webui-rembg (pip uninstall -y opencv-python-headless watchdog rembg asyncer filetype imagehash && pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.38" "asyncer>=0.0.2" "filetype>=1.2.0" "imagehash>=4.3.1") else (echo "Nothing to do rembg does not exist...")
+echo Update/install finished...
 
-IF exist .\extensions\sd-webui-reactor (pip install -r  .\extensions\sd-webui-reactor\requirements.txt) else (echo "Nothing to do sd-webui-reactor does not exist...")
-
-endlocal
-
-echo "Update/install finished..."
-pause

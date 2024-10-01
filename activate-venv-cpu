@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd $PWD
+
+source ./venv-cpu/bin/activate
+
+echo "venv-cpu activated"
+
+python3.10 --version
+

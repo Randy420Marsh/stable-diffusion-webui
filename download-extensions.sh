@@ -20,6 +20,8 @@ git clone https://github.com/Randy420Marsh/sd-extension-steps-animation.git
 
 git clone https://github.com/Randy420Marsh/sd-webui-3d-open-pose-editor.git
 
+git clone https://github.com/Randy420Marsh/sd-webui-ar.git
+
 git clone https://github.com/Randy420Marsh/sd-webui-controlnet.git
 
 git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git
@@ -32,4 +34,14 @@ git clone https://github.com/Randy420Marsh/stable-diffusion-webui-sonar.git
 
 git clone https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
 
+git clone https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git
+
 git clone https://github.com/Randy420Marsh/video_loopback_for_webui.git
+
+git clone https://github.com/Randy420Marsh/sd-webui-model-converter.git
+
+git clone https://github.com/Randy420Marsh/sd_civitai_extension.git
+
+git clone https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
+
+git clone https://github.com/Randy420Marsh/webui-stability-api.git

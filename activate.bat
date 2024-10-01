@@ -6,6 +6,8 @@ cd %current_path%
 
 setlocal enabledelayedexpansion
 
-set "python=python"
+set "PYTHON=python"
 
-IF exist ./venv (cmd /k call .\venv\scripts\activate.bat)  ELSE (cmd /k python -m venv venv && cmd /k call .\venv\scripts\activate.bat)
+set "venv=venv"
+
+IF exist ./%venv% (cmd /k call .\%venv%\scripts\activate.bat) ELSE (cmd /k python -m venv %venv%  && cmd /k call .\%venv%\scripts\activate.bat)
