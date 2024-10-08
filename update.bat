@@ -14,7 +14,7 @@ set EXTENSIONS_DIR=%AUTOMATIC1111_DIR%\extensions
 echo EXTENSIONS_DIR: %EXTENSIONS_DIR%
 
 REM Check for NVIDIA GPU
-wmic path win32_VideoController get name | findstr /I "NVIDIA"
+wmic path win32_VideoController get name | findstr /I "NVIDIA" >nul
 if %errorlevel%==0 (
     echo NVIDIA GPU detected.
 ) else (
@@ -27,7 +27,8 @@ set /p user_choice=Do you want to update the GPU or CPU version (G/C)?
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
     set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
-    set install_xformers=true
+    echo Disabling xformers install because of dependency problems...
+    set install_xformers=false
 ) else if /I "%user_choice%"=="C" (
     set venv_dir=venv-cpu
     set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
@@ -69,7 +70,8 @@ cd %EXTENSIONS_DIR%
 dir
 echo We should now be inside the extensions directory...
 
-set repos=(
+REM Iterate through each repository URL directly
+for %%i in (
     https://github.com/Randy420Marsh/sd-webui-llul.git
     https://github.com/Randy420Marsh/SD-latent-mirroring.git
     https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
@@ -95,20 +97,20 @@ set repos=(
     https://github.com/Randy420Marsh/sd_civitai_extension.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
     https://github.com/Randy420Marsh/webui-stability-api.git
-)
-
-for %%i in %repos% do (
-    set repo=%%i
-    set repo_name=%repo:~%repo:rpath%\%.git
-    if exist %repo_name% (
-        echo Updating %repo_name%...
-        cd %repo_name%
+) do (
+    set "repo=%%i"
+    setlocal enabledelayedexpansion
+    set "repo_name=!repo:~33,-4!"  REM Extract a simple repo name from the URL
+    if exist "!repo_name!" (
+        echo Updating !repo_name!...
+        cd "!repo_name!"
         git pull
         cd ..
     ) else (
-        echo Cloning %repo_name%...
-        git clone %repo% %repo_name%
+        echo Cloning !repo_name!...
+        git clone "!repo!" "!repo_name!"
     )
+    endlocal
 )
 
 cd %AUTOMATIC1111_DIR%
@@ -120,5 +122,8 @@ if exist .\extensions\stable-diffusion-webui-rembg (
     echo Nothing to do rembg does not exist...
 )
 
-echo Update/install finished...
+echo Fixing dependencies...
 
+pip install "opencv-python-headless>=4.9.0" albumentations==1.4.3
+
+echo Update/install finished...
