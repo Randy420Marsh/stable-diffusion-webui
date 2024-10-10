@@ -97,6 +97,7 @@ for %%i in (
     https://github.com/Randy420Marsh/sd_civitai_extension.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
     https://github.com/Randy420Marsh/webui-stability-api.git
+    https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git
 ) do (
     set "repo=%%i"
     setlocal enabledelayedexpansion

@@ -1,6 +1,8 @@
 @echo off
 
-set "SD_ROOT_PATH=E://AI//stable_diffusion_models_and_vae"
+REM set "SD_ROOT_PATH=E://AI//stable_diffusion_models_and_vae"
+
+set "SD_ROOT_PATH=F://AI//stable_diffusion_models_and_vae"
 
 set "PYTHON=python"
 set GIT=
