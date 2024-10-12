@@ -32,14 +32,14 @@ set /p user_choice=Do you want to update the GPU or CPU version (G/C)?
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
     set install_cmd="torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
-    echo "Disabling xformers install because of dependency problems..."
+    echo Disabling xformers install because of dependency problems...
     set install_xformers=false
 ) else if /I "%user_choice%"=="C" (
     set venv_dir=venv-cpu
-    set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+    set install_cmd=%python_cmd% -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
     set install_xformers=false
 ) else (
-    echo "Invalid choice. Please enter G for GPU version or C for CPU version."
+    echo Invalid choice. Please enter G for GPU version or C for CPU version.
     goto choice
 )
 
@@ -74,7 +74,7 @@ if "%install_xformers%"=="true" (
 
 cd %EXTENSIONS_DIR%
 dir
-echo "We should now be inside the extensions directory..."
+echo We should now be inside the extensions directory...
 
 REM Iterate through each repository URL directly
 for %%i in (
@@ -98,42 +98,46 @@ for %%i in (
     https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
     https://github.com/Randy420Marsh/video_loopback_for_webui.git
     https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git
-    https://github.com/Randy420Marsh/video_loopback_for_webui.git
-    https://github.com/Randy420Marsh/sd-webui-model-converter.git
     https://github.com/Randy420Marsh/sd_civitai_extension.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
     https://github.com/Randy420Marsh/webui-stability-api.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git
 ) do (
     set "repo=%%i"
-    setlocal enabledelayedexpansion
     set "repo_name=!repo:~33,-4!"  REM Extract a simple repo name from the URL
     if exist "!repo_name!" (
-        echo "Updating !repo_name!..."
+        echo Updating !repo_name!...
         cd "!repo_name!"
         git pull
         cd ..
     ) else (
-        echo "Cloning !repo_name!..."
+        echo Cloning !repo_name!...
         git clone "!repo!" "!repo_name!"
     )
-    endlocal
 )
 
 cd %AUTOMATIC1111_DIR%
 
+pip install fastapi -U
+
+pip install albumentations -U
+
+pip uninstall -y watchdog opencv-python-headless
+
+REM Install rembg dependencies
 if exist .\extensions\stable-diffusion-webui-rembg (
-    pip uninstall -y watchdog opencv-python-headless
-    pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
+    echo Installing rembg dependencies
+    REM pip install opencv-python-headless==4.6.0.66 watchdog==2.1.9 rembg==2.0.50 onnxruntime pymatting pooch
+    pip install opencv-python-headless>=4.9.0.80 watchdog==2.1.9 rembg==2.0.50 onnxruntime pymatting pooch
 ) else (
-    echo "Nothing to do rembg does not exist..."
+    echo Nothing to do; rembg does not exist...
 )
 
-echo "Fixing dependencies..."
+echo Fixing dependencies...
 
-pip install "opencv-python-headless>=4.9.0" albumentations==1.4.3
+REM Deprecated: pip install "opencv-python-headless>=4.9.0" "albumentations==1.4.3"
 
-echo "Update/install finished..."
+echo Update/install finished...
 
-endlocal
 pause
+endlocal
