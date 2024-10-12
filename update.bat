@@ -27,7 +27,7 @@ REM Prompt user for choice
 set /p user_choice=Do you want to update the GPU or CPU version (G/C)? 
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
-    set install_cmd=pip install "torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
+    set install_cmd=pip install "torch==2.1.0" "torchvision==0.16.0" --index-url https://download.pytorch.org/whl/cu118
     echo "Disabling xformers install because of dependency problems..."
     set install_xformers=false
 ) else if /I "%user_choice%"=="C" (
@@ -74,6 +74,7 @@ echo We should now be inside the extensions directory...
 
 REM Iterate through each repository URL directly
 for %%i in (
+    ::https://github.com/Randy420Marsh/adetailer.git
     https://github.com/Randy420Marsh/sd-webui-llul.git
     https://github.com/Randy420Marsh/SD-latent-mirroring.git
     https://github.com/Randy420Marsh/a1111-sd-webui-haku-img.git
@@ -94,9 +95,9 @@ for %%i in (
     https://github.com/Randy420Marsh/ultimate-upscale-for-automatic1111.git
     https://github.com/Randy420Marsh/video_loopback_for_webui.git
     https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git
-    https://github.com/Randy420Marsh/sd_civitai_extension.git
+    ::https://github.com/Randy420Marsh/sd_civitai_extension.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
-    https://github.com/Randy420Marsh/webui-stability-api.git
+    ::https://github.com/Randy420Marsh/webui-stability-api.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git
 ) do (
     set "repo=%%i"
