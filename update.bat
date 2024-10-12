@@ -1,6 +1,6 @@
 @echo off
 
-echo This script is updated 2024...
+echo "This script is updated 2024..."
 
 setlocal enabledelayedexpansion
 
@@ -22,24 +22,20 @@ if %errorlevel%==0 (
     echo No NVIDIA GPU detected.
 )
 
-REM old stuff.... pip install "torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
-
-REM pip install "xformers==0.0.22"
-
 REM Prompt user for choice
 :choice
 set /p user_choice=Do you want to update the GPU or CPU version (G/C)? 
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
-    set install_cmd="torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
-    echo Disabling xformers install because of dependency problems...
+    set install_cmd=pip install "torch==2.0.1+cu118" "torchvision==0.15.2+cu118" --index-url https://download.pytorch.org/whl/cu118
+    echo "Disabling xformers install because of dependency problems..."
     set install_xformers=false
 ) else if /I "%user_choice%"=="C" (
     set venv_dir=venv-cpu
-    set install_cmd=%python_cmd% -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
+    set install_cmd=pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu
     set install_xformers=false
 ) else (
-    echo Invalid choice. Please enter G for GPU version or C for CPU version.
+    echo "Invalid choice. Please enter G for GPU version or C for CPU version."
     goto choice
 )
 
