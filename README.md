@@ -1,3 +1,13 @@
+Install git and python3
+git clone https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111
+cd AUTOMATIC1111
+./update.sh or update.bat if you really need lots of extensions (slow setup).
+./webui.sh for linux 
+or
+webui-user.bat for windows fast setup
+Optimizations if using cpu only, this is a good read, and is already applied after update.sh is run:
+https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/10514
+
 # Stable Diffusion web UI
 A web interface for Stable Diffusion, implemented using Gradio library.
 
