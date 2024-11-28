@@ -134,7 +134,7 @@ if exist .\extensions\sd_dreambooth_extension (
 
 echo Fixing dependencies...
 
-pip install "watchdog==2.1.9" "rembg==2.0.50" "onnxruntime" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "think" "pypiwin32"
+pip install "watchdog==2.1.9" "rembg==2.0.50" "onnxruntime" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip"
 
 echo "Copy python libs to venv"
 
