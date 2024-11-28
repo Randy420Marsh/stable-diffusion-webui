@@ -138,8 +138,11 @@ pip install "watchdog==2.1.9" "rembg==2.0.50" "onnxruntime" "pymatting" "pooch" 
 
 echo "Copy python libs to venv"
 
-copy "C:\Program Files\Python310\libs\*" "%COMFY_UI_DIR%\venv\Scripts\libs\"
+mkdir "%AUTOMATIC1111_DIR%\venv\Scripts\libs\"
+
+copy "C:\Program Files\Python310\libs\*" "%AUTOMATIC1111_DIR%\venv\Scripts\libs\"
 
 echo Update/install finished...
+
 endlocal
 pause
