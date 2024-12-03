@@ -5,6 +5,8 @@ git clone -b main https://github.com/Randy420Marsh/stable-diffusion-webui.git AU
 
 cd AUTOMATIC1111
 
+run webui.bat and after it is finished run update.bat
+
 ./fast-setup.sh
 
 for fast setup on linux
