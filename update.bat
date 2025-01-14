@@ -100,6 +100,10 @@ for %%i in (
     https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git
     https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git
     https://github.com/Randy420Marsh/sd_dreambooth_extension.git
+    https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git
+    https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git
+    https://github.com/Randy420Marsh/a1111-sd-webui-tagcomplete.git
+    https://github.com/Randy420Marsh/sd-dynamic-prompts.git
 ) do (
     set "repo=%%i"
     setlocal enabledelayedexpansion
@@ -118,6 +122,10 @@ for %%i in (
 
 cd %AUTOMATIC1111_DIR%
 
+IF exist ./wildcards (cd wildcards && git reset --hard && git pull && echo "Updated wildcards") ELSE (git clone https://github.com/Randy420Marsh/WC-SDVN.git wildcards && echo "Downloaded/Installed wildcards")
+
+cd %AUTOMATIC1111_DIR%
+
 if exist .\extensions\stable-diffusion-webui-rembg (
     pip uninstall -y watchdog opencv-python-headless
     pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
@@ -130,6 +138,13 @@ if exist .\extensions\sd_dreambooth_extension (
     pip install -r .\extensions\sd_dreambooth_extension\requirements.txt
 ) else (
     echo Nothing to do sd_dreambooth_extension does not exist...
+)
+
+
+if exist .\extensions\sd-dynamic-prompts (
+    pip install -r .\extensions\sd-dynamic-prompts\requirements.txt
+) else (
+    echo Nothing to do sd-dynamic-prompts does not exist...
 )
 
 echo Fixing dependencies...
