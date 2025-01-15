@@ -129,10 +129,12 @@ cd %AUTOMATIC1111_DIR%
 
 if exist .\extensions\stable-diffusion-webui-rembg (
     pip uninstall -y watchdog opencv-python-headless
-    pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
+    pip install "opencv-python-headless>=4.9.0" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
 ) else (
     echo Nothing to do rembg does not exist...
 )
+
+REM pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
 
 if exist .\extensions\sd_dreambooth_extension (
     pip uninstall -y watchdog opencv-python-headless
