@@ -103,6 +103,7 @@ for %%i in (
     https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git
     https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git
     https://github.com/Randy420Marsh/a1111-sd-webui-tagcomplete.git
+    https://github.com/Randy420Marsh/model-keyword.git
     https://github.com/Randy420Marsh/sd-dynamic-prompts.git
 ) do (
     set "repo=%%i"
