@@ -1,11 +1,14 @@
-
 Install git and python3
 
 git clone -b main https://github.com/Randy420Marsh/stable-diffusion-webui.git AUTOMATIC1111
 
 cd AUTOMATIC1111
 
-run webui.bat and after it is finished run update.bat
+Start by running update.bat then run start_with_update.bat so that all dependencies get installed.
+
+After that everything should work offline by running start.bat
+
+If that does not work run update.bat, then webui.bat and after it is finished start.bat. 
 
 ./fast-setup.sh
 
