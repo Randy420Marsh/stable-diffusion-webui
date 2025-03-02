@@ -129,12 +129,12 @@ cd %AUTOMATIC1111_DIR%
 
 if exist .\extensions\stable-diffusion-webui-rembg (
     pip uninstall -y watchdog opencv-python-headless
-    pip install "opencv-python-headless>=4.9.0" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
+    pip install "opencv-python-headless>=4.9.0" "watchdog==2.1.9" "rembg==2.0.50" "onnx==1.17.0" pymatting pooch
 ) else (
     echo Nothing to do rembg does not exist...
 )
 
-REM pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" onnxruntime pymatting pooch
+REM pip install "opencv-python-headless==4.6.0.66" "watchdog==2.1.9" "rembg==2.0.50" "onnx==1.17.0" pymatting pooch
 
 if exist .\extensions\sd_dreambooth_extension (
     pip uninstall -y watchdog opencv-python-headless
@@ -152,7 +152,13 @@ if exist .\extensions\sd-dynamic-prompts (
 
 echo Fixing dependencies...
 
-pip install "watchdog==2.1.9" "rembg==2.0.50" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip" "onnx==1.17.0" "protobuf<5,>=4.25.3" "picologging"
+pip install "watchdog==2.1.9" "rembg==2.0.50" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip" "protobuf<5,>=4.25.3" "picologging"
+
+pip install onnxruntime-gpu --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-11/pypi/simple/
+
+REM onnx instructions: https://onnxruntime.ai/docs/install/
+
+REM "onnx==1.17.0"
 
 REM "protobuf==5.29.3"
 
