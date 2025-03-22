@@ -150,11 +150,17 @@ if exist .\extensions\sd-dynamic-prompts (
     echo Nothing to do sd-dynamic-prompts does not exist...
 )
 
+if exist .\extensions\a1111-sd-webui-haku-img (
+    pip install -r .\extensions\a1111-sd-webui-haku-img\requirements.txt
+) else (
+    echo Nothing to do sd-dynamic-prompts does not exist...
+)
+
 echo Fixing dependencies...
 
 pip install "watchdog==2.1.9" "rembg==2.0.50" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip" "protobuf<5,>=4.25.3" "picologging"
 
-pip install onnxruntime-gpu --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-11/pypi/simple/
+pip install onnxruntime-gpu[cuda,cudnn] --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-11/pypi/simple/
 
 REM onnx instructions: https://onnxruntime.ai/docs/install/
 
