@@ -2,9 +2,9 @@
 
 setlocal enabledelayedexpansion
 
-echo This script is updated 2024...
+echo This script is updated 2025...
 
-set BNB_CUDA_VERSION=118
+REM set BNB_CUDA_VERSION=118
 
 git pull
 
@@ -31,7 +31,7 @@ REM Prompt user for choice
 set /p user_choice=Do you want to update the GPU or CPU version (G/C)? 
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
-    set install_cmd=pip install "torch==2.1.2+cu118" "torchvision==0.16.2+cu118" --index-url https://download.pytorch.org/whl/cu118
+    set install_cmd=pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https://download.pytorch.org/whl/cu121
     set install_xformers=true
 ) else if /I "%user_choice%"=="C" (
     set venv_dir=venv-cpu
@@ -66,7 +66,7 @@ pip install -r requirements.txt
 pip install -r requirements_versions.txt
 
 if "%install_xformers%"=="true" (
-    pip install "xformers==0.0.23.post1" --index-url https://download.pytorch.org/whl/cu118
+    pip install "xformers==0.0.23.post1" --index-url https://download.pytorch.org/whl/cu121
 )
 
 cd %EXTENSIONS_DIR%
@@ -162,7 +162,7 @@ echo Fixing dependencies...
 
 pip install "watchdog==2.1.9" "rembg==2.0.50" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch==2.24.0" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip" "protobuf<5,>=4.25.3" "picologging"
 
-pip install onnxruntime-gpu[cuda,cudnn] --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-11/pypi/simple/
+REM pip install onnxruntime-gpu[cuda,cudnn] --index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-11/pypi/simple/
 
 REM onnx instructions: https://onnxruntime.ai/docs/install/
 
@@ -174,11 +174,13 @@ echo "Copy python libs to venv"
 
 mkdir "%AUTOMATIC1111_DIR%\venv\Scripts\libs\"
 
-IF exist "C:\Program Files\Python310\libs\" (copy "C:\Program Files\Python310\libs\*" "%COMFY_UI_DIR%\venv\Scripts\libs\") ELSE (copy "C:\Users\John\AppData\Local\Programs\Python\Python310\libs\*" "%COMFY_UI_DIR%\venv\Scripts\libs\")
+IF exist "C:\Program Files\Python310\libs\" (copy "C:\Program Files\Python310\libs\*" "%AUTOMATIC1111_DIR%\venv\Scripts\libs\") ELSE (copy "C:\Users\John\AppData\Local\Programs\Python\Python310\libs\*" "%AUTOMATIC1111_DIR%\venv\Scripts\libs\")
 
 echo Update/install finished...
 
 echo Run accelerate config...
+
+pip install "diffusers<0.32.0,>=0.31.0"
 
 accelerate config
 
