@@ -11,6 +11,11 @@ MAX_THREADS=$(nproc)
 export OMP_NUM_THREADS=$MAX_THREADS
 export MKL_NUM_THREADS=$MAX_THREADS
 
+export DREAMBOOTH_SKIP_INSTALL=True
+
+export HF_DATASETS_OFFLINE=1
+export TRANSFORMRRS_OFFLINE=1
+
 echo "Using $MAX_THREADS threads for OMP and MKL"
 
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so:$LD_PRELOAD
@@ -34,9 +39,9 @@ cd $PWD
 
 # "/media/your-username/your-drive-uuid/AUTOMATIC1111-dir"
 
-SD_ROOT_PATH="set-this-to-your-drive"
+SD_ROOT_PATH="/media/john/A024FBBA24FB9210/AI/stable_diffusion_models_and_vae"
 
-export SD_ROOT_PATH="set-this-to-your-drive"
+export SD_ROOT_PATH="/media/john/A024FBBA24FB9210/AI/stable_diffusion_models_and_vae"
 
 echo "Current active SD root path:"
 
@@ -66,7 +71,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 
 echo "loading models from custom path:"
 
-export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models" --lora-dir "$SD_ROOT_PATH/models/Lora" --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --no-download-sd-model --port 4433 --opt-split-attention --medvram --theme=dark --precision autocast --api"
+export COMMANDLINE_ARGS="--controlnet-dir "%SD_ROOT_PATH%/models/ControlNet" --controlnet-annotator-models-path "%SD_ROOT_PATH%/models/ControlNet/annotator/models" --lora-dir "%SD_ROOT_PATH%/models/Lora" --gfpgan-dir "%SD_ROOT_PATH%/models/GFPGAN" --vae-dir "%SD_ROOT_PATH%/models/VAE" --ckpt-dir "%SD_ROOT_PATH%/models/" --embeddings-dir "%SD_ROOT_PATH%/models/embeddings" --codeformer-models-path "%SD_ROOT_PATH%/models/Codeformer" --gfpgan-models-path "%SD_ROOT_PATH%/models/GFPGAN" --esrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --bsrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --realesrgan-models-path "%SD_ROOT_PATH%/models/RealESRGAN" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --lowvram --api --skip-install --loglevel ERROR --xformers"
 
 ##########################################
 
@@ -90,7 +95,7 @@ export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --co
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-export TORCH_COMMAND="pip install torch==2.0.1 torchvision==0.15.2 --index-url https://download.pytorch.org/whl/cu118"
+export TORCH_COMMAND="pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https://download.pytorch.org/whl/cu121"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"

@@ -158,6 +158,12 @@ if exist .\extensions\a1111-sd-webui-haku-img (
     echo Nothing to do sd-dynamic-prompts does not exist...
 )
 
+if exist .\extensions\sd-webui-controlnet (
+    pip install -r .\extensions\sd-webui-controlnet\requirements.txt
+) else (
+    echo Nothing to do sd-dynamic-prompts does not exist...
+)
+
 echo Fixing dependencies...
 
 pip install "watchdog==2.1.9" "rembg==2.0.50" "pymatting" "pooch" "albumentations==1.4.3" "opencv-python-headless>=4.9.0" "open-clip-torch==2.24.0" "scikit-learn-intelex" "numpy<2.0.0,>=1.0.0" "thinc" "pypiwin32" "openai-clip" "protobuf<5,>=4.25.3" "picologging"
