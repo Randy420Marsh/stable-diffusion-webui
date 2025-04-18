@@ -8,7 +8,7 @@
 MAX_THREADS=$(nproc)
 
 # Set the environment variables
-export OMP_NUM_THREADS=$MAX_THREADS
+export omp_set_max_active_levels=$MAX_THREADS
 export MKL_NUM_THREADS=$MAX_THREADS
 
 export DREAMBOOTH_SKIP_INSTALL=True
