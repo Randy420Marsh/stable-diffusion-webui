@@ -31,7 +31,7 @@ while true; do
     case "$user_choice" in
         [Gg]* )
             venv_dir="venv"
-            install_cmd='pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https://download.pytorch.org/whl/cu121'
+            install_cmd='pip install "torch==2.7.0" "torchvision==0.22.0" --index-url https://download.pytorch.org/whl/cu128'
             install_xformers=true
             break;;
         [Cc]* )
