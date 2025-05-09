@@ -24,7 +24,7 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libiomp5.so:$LD_PRELOAD
 
 export model_args.use_multiprocessing=False
 
-export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64
+export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64
 
 #Uncomment as needed...
 #and change the webui.sh to point to this file instead of webui-user.sh
@@ -99,7 +99,7 @@ export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --co
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-export TORCH_COMMAND="pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https:/download.pytorch.org/whl/cu121"
+export TORCH_COMMAND="pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"
