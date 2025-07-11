@@ -8,13 +8,17 @@
 MAX_THREADS=$(nproc)
 
 # Set the environment variables
+export AUTOMATIC1111_DISABLE_MMAP=1
+
+export disable_mmap=1
+
 export omp_set_max_active_levels=$MAX_THREADS
 export MKL_NUM_THREADS=$MAX_THREADS
 
-export DREAMBOOTH_SKIP_INSTALL=True
+#export DREAMBOOTH_SKIP_INSTALL=True
 
-export HF_DATASETS_OFFLINE=1
-export TRANSFORMRRS_OFFLINE=1
+#export HF_DATASETS_OFFLINE=1
+#export TRANSFORMRRS_OFFLINE=1
 
 echo "Using $MAX_THREADS threads for OMP and MKL"
 
@@ -22,7 +26,7 @@ export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so:$LD_PRELOAD
 export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms: 60000,muzzy_decay_ms:60000"
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libiomp5.so:$LD_PRELOAD
 
-export model_args.use_multiprocessing=False
+#export model_args.use_multiprocessing=False
 
 export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64
 
@@ -75,10 +79,10 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 
 echo "loading models from custom path:"
 
-export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models" --lora-dir "$SD_ROOT_PATH/models/Lora" --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --api --skip-install --loglevel ERROR --xformers"
+export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models" --lora-dir "$SD_ROOT_PATH/models/Lora" --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --api --loglevel ERROR"
 
 ##########################################
-
+# --disable-safe-unpickle --skip-install
 
 # Install directory without trailing slash
 #install_dir="/home/$(whoami)"
@@ -93,13 +97,13 @@ export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --co
 #export GIT="git"
 
 # python3 venv without trailing slash (defaults to ${install_dir}/${clone_dir}/venv)
-#venv_dir="venv"
+venv_dir="venv"
 
 # script to launch to start the app
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-export TORCH_COMMAND="pip install torch==2.7.0 torchvision==0.22.0 --index-url https://download.pytorch.org/whl/cu128"
+export TORCH_COMMAND="pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"
