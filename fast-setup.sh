@@ -6,6 +6,8 @@ AUTOMATIC1111_WEBUI="AUTOMATIC1111"
 
 ##########################################
 
+sudo apt install wget git python3 python3-venv libgl1 libglib2.0-0
+
 USER="$USER"
 
 export USER=$USER

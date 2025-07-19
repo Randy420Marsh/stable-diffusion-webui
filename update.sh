@@ -8,6 +8,8 @@ echo "This script is updated 2025..."
 # Pull latest changes
 git pull
 
+export CC=usr/bin/gcc-12
+
 # Set Python command
 python_cmd="python3"
 
@@ -25,18 +27,22 @@ else
     echo "No NVIDIA GPU detected."
 fi
 
+pip uninstall -y torch torchvision torchaudio xformers
+
+#pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
+
 # Prompt user for choice
 while true; do
     read -p "Do you want to update the GPU or CPU version (G/C)? " user_choice
     case "$user_choice" in
         [Gg]* )
             venv_dir="venv"
-            install_cmd='pip install "torch==2.7.0" "torchvision==0.22.0" --index-url https://download.pytorch.org/whl/cu128'
+            install_cmd='pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu128'
             install_xformers=true
             break;;
         [Cc]* )
             venv_dir="venv-cpu"
-            install_cmd='pip install "torch==2.1.2" "torchvision==0.16.2" --index-url https://download.pytorch.org/whl/cpu'
+            install_cmd='pip3 install "torch==2.1.2" "torchvision==0.16.2" --index-url https://download.pytorch.org/whl/cpu'
             install_xformers=false
             break;;
         * )
@@ -59,14 +65,14 @@ cd "$AUTOMATIC1111_DIR"
 
 mkdir -p $EXTENSIONS_DIR
 
-pip uninstall -y torch torchvision
+pip uninstall -y torch torchvision torchaudio xformers
 eval "$install_cmd"
 
 pip install -r requirements.txt
 pip install -r requirements_versions.txt
 
 if $install_xformers; then
-    pip install "xformers==0.0.23.post1" --index-url https://download.pytorch.org/whl/cu121
+    pip install xformers --index-url https://download.pytorch.org/whl/cu128
 fi
 
 cd "$EXTENSIONS_DIR" || exit
@@ -95,7 +101,7 @@ EXTENSION_REPOS=(
     "https://github.com/Randy420Marsh/video_loopback_for_webui.git"
     "https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
     "https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git"
-    "https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git"
+    #"https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git"
     "https://github.com/Randy420Marsh/sd_dreambooth_extension.git"
     "https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git"
     "https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git"
@@ -161,6 +167,11 @@ fi
 echo "Fixing dependencies..."
 
 pip install \
+    "bs4" \
+    "xformers"
+    
+
+pip install \
     "watchdog==2.1.9" \
     "rembg==2.0.50" \
     "pymatting" \
@@ -173,6 +184,8 @@ pip install \
     "thinc" \
     "openai-clip" \
     "protobuf<5,>=4.25.3" \
+    "inference==0.45.1" \
+    "onnxruntime<1.20.0,>=1.15.1" \
     "picologging"
 
 echo "Installing diffusers..."
