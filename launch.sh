@@ -71,7 +71,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 
 echo "loading models from custom path:"
 
-export COMMANDLINE_ARGS="--controlnet-dir "%SD_ROOT_PATH%/models/ControlNet" --controlnet-annotator-models-path "%SD_ROOT_PATH%/models/ControlNet/annotator/models" --lora-dir "%SD_ROOT_PATH%/models/Lora" --gfpgan-dir "%SD_ROOT_PATH%/models/GFPGAN" --vae-dir "%SD_ROOT_PATH%/models/VAE" --ckpt-dir "%SD_ROOT_PATH%/models/" --embeddings-dir "%SD_ROOT_PATH%/models/embeddings" --codeformer-models-path "%SD_ROOT_PATH%/models/Codeformer" --gfpgan-models-path "%SD_ROOT_PATH%/models/GFPGAN" --esrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --bsrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --realesrgan-models-path "%SD_ROOT_PATH%/models/RealESRGAN" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --lowvram --api --loglevel ERROR"
+export COMMANDLINE_ARGS="--controlnet-dir "%SD_ROOT_PATH%/models/ControlNet" --controlnet-annotator-models-path "%SD_ROOT_PATH%/models/ControlNet/annotator/models" --lora-dir "%SD_ROOT_PATH%/models/Lora" --gfpgan-dir "%SD_ROOT_PATH%/models/GFPGAN" --vae-dir "%SD_ROOT_PATH%/models/VAE" --ckpt-dir "%SD_ROOT_PATH%/models/" --embeddings-dir "%SD_ROOT_PATH%/models/embeddings" --codeformer-models-path "%SD_ROOT_PATH%/models/Codeformer" --gfpgan-models-path "%SD_ROOT_PATH%/models/GFPGAN" --esrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --bsrgan-models-path "%SD_ROOT_PATH%/models/ESRGAN" --realesrgan-models-path "%SD_ROOT_PATH%/models/RealESRGAN" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --api --loglevel ERROR"
 
 ##########################################
 
@@ -95,7 +95,7 @@ export COMMANDLINE_ARGS="--controlnet-dir "%SD_ROOT_PATH%/models/ControlNet" --c
 #export LAUNCH_SCRIPT="launch.py"
 
 # install command for torch
-export TORCH_COMMAND="pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https://download.pytorch.org/whl/cu121"
+export TORCH_COMMAND="pip install --upgrade "torch==2.7.1+cu128" "torchvision==0.22.1+cu128" "xformers" --index-url https://download.pytorch.org/whl/cu128"
 
 # Requirements file to use for stable-diffusion-webui
 #export REQS_FILE="requirements_versions.txt"

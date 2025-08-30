@@ -48,7 +48,7 @@ then
 fi
 if [[ ! -x "$(command -v "${python_cmd}")" ]]
 then
-  python_cmd="python3"
+  python_cmd="python3.10"
 fi
 
 # git executable

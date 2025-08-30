@@ -8,7 +8,7 @@ echo "This script is updated 2025..."
 # Pull latest changes
 git pull
 
-export CC=usr/bin/gcc-12
+export CC=/usr/bin/gcc-12
 
 # Set Python command
 python_cmd="python3"
@@ -101,14 +101,16 @@ EXTENSION_REPOS=(
     "https://github.com/Randy420Marsh/video_loopback_for_webui.git"
     "https://github.com/Randy420Marsh/multidiffusion-upscaler-for-automatic1111.git"
     "https://github.com/Randy420Marsh/stable-diffusion-webui-dataset-tag-editor.git"
-    #"https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git"
     "https://github.com/Randy420Marsh/sd_dreambooth_extension.git"
     "https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git"
-    "https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git"
     "https://github.com/Randy420Marsh/a1111-sd-webui-tagcomplete.git"
     "https://github.com/Randy420Marsh/model-keyword.git"
     "https://github.com/Randy420Marsh/sd-dynamic-prompts.git"
 )
+
+#conflicting on linux
+    #"https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git"
+    #"https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git"
 
 for repo in "${EXTENSION_REPOS[@]}"; do
     repo_name=$(basename "$repo" .git)
@@ -171,7 +173,7 @@ pip install \
     "xformers"
     
 
-pip install \
+pip install --upgrade \
     "watchdog==2.1.9" \
     "rembg==2.0.50" \
     "pymatting" \
@@ -189,7 +191,13 @@ pip install \
     "picologging"
 
 echo "Installing diffusers..."
-pip install "diffusers<0.32.0,>=0.31.0"
+#pip install --upgrade "diffusers<0.32.0,>=0.31.0"
+
+pip install --upgrade "diffusers<0.32.0,>=0.31.0" tokenizers "transformers==4.32.1" inference inference-gpu
+
+pip install --upgrade "scikit-image<=0.24.0,>=0.19.0" "fastapi<0.111,>=0.100"
+
+pip install "pytorch-lightning<=1.9.5"
 
 echo "Running accelerate config..."
 #accelerate config
