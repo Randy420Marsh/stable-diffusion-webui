@@ -105,12 +105,14 @@ EXTENSION_REPOS=(
     "https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git"
     "https://github.com/Randy420Marsh/a1111-sd-webui-tagcomplete.git"
     "https://github.com/Randy420Marsh/model-keyword.git"
-    "https://github.com/Randy420Marsh/sd-dynamic-prompts.git"
+
 )
 
 #conflicting on linux
     #"https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git"
     #"https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git"
+
+    #?: "https://github.com/Randy420Marsh/sd-dynamic-prompts.git"
 
 for repo in "${EXTENSION_REPOS[@]}"; do
     repo_name=$(basename "$repo" .git)
@@ -190,6 +192,8 @@ pip install --upgrade \
     "onnxruntime<1.20.0,>=1.15.1" \
     "picologging"
 
+pip install "bs4" "onnxruntime-gpu" "insightface==0.7.3"
+
 echo "Installing diffusers..."
 #pip install --upgrade "diffusers<0.32.0,>=0.31.0"
 
@@ -198,6 +202,8 @@ pip install --upgrade "diffusers<0.32.0,>=0.31.0" tokenizers "transformers==4.32
 pip install --upgrade "scikit-image<=0.24.0,>=0.19.0" "fastapi<0.111,>=0.100"
 
 pip install "pytorch-lightning<=1.9.5"
+
+uv pip install --upgrade "numpy<=1.26.4" "Pillow<10,>=9.0.0" "gradio==3.41.2" "aiofiles<24.0,>=22.0" "markupsafe~=2.0" "inference" "inference-gpu" "transformers==4.30.2" "tokenizers"  "protobuf<5,>=4.25.3"
 
 echo "Running accelerate config..."
 #accelerate config
