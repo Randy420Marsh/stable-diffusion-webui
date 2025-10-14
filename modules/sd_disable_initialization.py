@@ -64,8 +64,9 @@ class DisableInitialization(ReplaceHelper):
         def create_model_and_transforms_without_pretrained(*args, pretrained=None, **kwargs):
             return self.create_model_and_transforms(*args, pretrained=None, **kwargs)
 
+        # https://github.com/AUTOMATIC1111/stable-diffusion-webui/issues/13245#issuecomment-1766452012
         def CLIPTextModel_from_pretrained(pretrained_model_name_or_path, *model_args, **kwargs):
-            res = self.CLIPTextModel_from_pretrained(None, *model_args, config=pretrained_model_name_or_path, state_dict={}, **kwargs)
+            res = self.CLIPTextModel_from_pretrained(pretrained_model_name_or_path, *model_args, config=pretrained_model_name_or_path, state_dict={}, **kwargs)
             res.name_or_path = pretrained_model_name_or_path
             return res
 
@@ -230,3 +231,4 @@ class LoadStateDictOnMeta(ReplaceHelper):
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.restore()
+
