@@ -8,6 +8,8 @@ REM set BNB_CUDA_VERSION=118
 
 git pull
 
+set PATH=C:\Users\John\AppData\Local\Programs\Python\Python310;%PATH%
+
 set python_cmd=python
 
 set AUTOMATIC1111_DIR=%cd%
@@ -31,11 +33,11 @@ REM Prompt user for choice
 set /p user_choice=Do you want to update the GPU or CPU version (G/C)? 
 if /I "%user_choice%"=="G" (
     set venv_dir=venv
-    set install_cmd=pip install "torch==2.1.2+cu121" "torchvision==0.16.2+cu121" --index-url https://download.pytorch.org/whl/cu121
+    set install_cmd=pip install "torch" "torchvision" --index-url https://download.pytorch.org/whl/cu128
     set install_xformers=true
 ) else if /I "%user_choice%"=="C" (
     set venv_dir=venv-cpu
-    set install_cmd=pip install "torch==2.1.2" "torchvision==0.16.2" --index-url https://download.pytorch.org/whl/cpu
+    set install_cmd=pip install "torch==2.7.1" "torchvision==0.22.1" --index-url https://download.pytorch.org/whl/cpu
     set install_xformers=false
 ) else (
     echo Invalid choice. Please enter G for GPU version or C for CPU version.
@@ -62,11 +64,11 @@ pip uninstall -y torch torchvision
 REM Install chosen version of torch and torchvision
 %install_cmd%
 
-pip install -r requirements.txt
-pip install -r requirements_versions.txt
+REM pip install -r requirements.txt
+REM pip install -r requirements_versions.txt
 
 if "%install_xformers%"=="true" (
-    pip install "xformers==0.0.23.post1" --index-url https://download.pytorch.org/whl/cu121
+    pip install "xformers" --index-url https://download.pytorch.org/whl/cu128
 )
 
 cd %EXTENSIONS_DIR%
@@ -103,7 +105,6 @@ for %%i in (
     https://github.com/Randy420Marsh/stable-diffusion-webui-aesthetic-image-scorer.git
     https://github.com/Randy420Marsh/sd_dreambooth_extension.git
     https://github.com/Randy420Marsh/sd-webui-gelbooru-prompt.git
-    https://github.com/Randy420Marsh/sd-webui-nsfw-filter.git
     https://github.com/Randy420Marsh/a1111-sd-webui-tagcomplete.git
     https://github.com/Randy420Marsh/model-keyword.git
     https://github.com/Randy420Marsh/sd-dynamic-prompts.git
@@ -186,9 +187,9 @@ echo Update/install finished...
 
 echo Run accelerate config...
 
-pip install "diffusers<0.32.0,>=0.31.0"
+pip install "diffusers<0.32.0,>=0.31.0" bs4
 
-accelerate config
+REM accelerate config
 
 endlocal
 pause
