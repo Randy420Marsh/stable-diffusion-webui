@@ -1,5 +1,7 @@
 @echo off
 
+set PATH=C:\Users\John\AppData\Local\Programs\Python\Python310;%PATH%
+
 set PYTHON=
 set GIT=
 set VENV_DIR=
