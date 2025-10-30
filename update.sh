@@ -170,42 +170,47 @@ fi
 
 echo "Fixing dependencies..."
 
-pip install \
-    "bs4" \
-    "xformers"
+uv pip install --upgrade -r uv_working_all.txt
+
+#pip install \
+#    "bs4" \
+#    "xformers"
     
 
-pip install --upgrade \
-    "watchdog==2.1.9" \
-    "rembg==2.0.50" \
-    "pymatting" \
-    "pooch" \
-    "albumentations==1.4.3" \
-    "opencv-python-headless>=4.9.0" \
-    "open-clip-torch==2.24.0" \
-    "scikit-learn-intelex" \
-    "numpy<2.0.0,>=1.0.0" \
-    "thinc" \
-    "openai-clip" \
-    "protobuf<5,>=4.25.3" \
-    "inference==0.45.1" \
-    "onnxruntime<1.20.0,>=1.15.1" \
-    "picologging"
+#pip install --upgrade \
+#    "watchdog==2.1.9" \
+#    "rembg==2.0.50" \
+#    "pymatting" \
+#    "pooch" \
+#    "albumentations==1.4.3" \
+#   "opencv-python-headless>=4.9.0" \
+#   "open-clip-torch==2.24.0" \
+#   "scikit-learn-intelex" \
+#   "numpy<2.0.0,>=1.0.0" \
+#   "thinc" \
+#   "openai-clip" \
+#   "protobuf<5,>=4.25.3" \
+#   "inference==0.45.1" \
+#   "onnxruntime<1.20.0,>=1.15.1" \
+#   "picologging"
 
-pip install "bs4" "onnxruntime-gpu" "insightface==0.7.3"
+#pip install "bs4" "onnxruntime-gpu" "insightface==0.7.3"
 
-echo "Installing diffusers..."
+#echo "Installing diffusers..."
 #pip install --upgrade "diffusers<0.32.0,>=0.31.0"
 
-pip install --upgrade "diffusers<0.32.0,>=0.31.0" tokenizers "transformers==4.32.1" inference inference-gpu
+#pip install --upgrade "diffusers<0.32.0,>=0.31.0" tokenizers "transformers==4.32.1" inference inference-gpu
 
-pip install --upgrade "scikit-image<=0.24.0,>=0.19.0" "fastapi<0.111,>=0.100"
+#pip install --upgrade "scikit-image<=0.24.0,>=0.19.0" "fastapi<0.111,>=0.100"
 
-pip install "pytorch-lightning<=1.9.5"
+#pip install "pytorch-lightning<=1.9.5"
 
-uv pip install --upgrade "numpy<=1.26.4" "Pillow<10,>=9.0.0" "gradio==3.41.2" "aiofiles<24.0,>=22.0" "markupsafe~=2.0" "inference" "inference-gpu" "transformers==4.30.2" "tokenizers"  "protobuf<5,>=4.25.3"
+#uv pip install --upgrade "numpy<=1.26.4" "Pillow<10,>=9.0.0" "gradio==3.41.2" "aiofiles<24.0,>=22.0" "markupsafe~=2.0" "inference" "inference-gpu" "transformers==4.30.2" "tokenizers"  "protobuf<5,>=4.25.3"
 
-echo "Running accelerate config..."
+#uv pip install --upgrade setuptools==69.5.1 inference inference-gpu blendmodes gradio mediapipe onnx protobuf open-clip-torch xformers torch torchvision
+
+
+#echo "Running accelerate config..."
 #accelerate config
 
 echo "Update/install finished!"

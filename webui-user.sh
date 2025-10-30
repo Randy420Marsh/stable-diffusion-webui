@@ -15,10 +15,10 @@ export disable_mmap=1
 export omp_set_max_active_levels=$MAX_THREADS
 export MKL_NUM_THREADS=$MAX_THREADS
 
-#export DREAMBOOTH_SKIP_INSTALL=True
+export DREAMBOOTH_SKIP_INSTALL=True
 
-#export HF_DATASETS_OFFLINE=1
-#export TRANSFORMRRS_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
+export TRANSFORMRRS_OFFLINE=1
 
 echo "Using $MAX_THREADS threads for OMP and MKL"
 
@@ -79,7 +79,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 
 echo "loading models from custom path:"
 
-export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models"  --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --lora-dir "$SD_ROOT_PATH/models/Lora" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --xformers --api --loglevel ERROR"
+export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models"  --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --lora-dir "$SD_ROOT_PATH/models/Lora" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --xformers --api  --skip-install --loglevel ERROR"
 
 #export COMMANDLINE_ARGS=" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --xformers --api --loglevel ERROR"
 
