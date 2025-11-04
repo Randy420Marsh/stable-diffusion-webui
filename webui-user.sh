@@ -10,10 +10,10 @@ MAX_THREADS=$(nproc)
 # Set the environment variables
 export AUTOMATIC1111_DISABLE_MMAP=1
 
-export disable_mmap=1
+#export disable_mmap=1
 
-export omp_set_max_active_levels=$MAX_THREADS
-export MKL_NUM_THREADS=$MAX_THREADS
+#export omp_set_max_active_levels=$MAX_THREADS
+#export MKL_NUM_THREADS=$MAX_THREADS
 
 export DREAMBOOTH_SKIP_INSTALL=True
 
@@ -22,13 +22,13 @@ export TRANSFORMRRS_OFFLINE=1
 
 echo "Using $MAX_THREADS threads for OMP and MKL"
 
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libjemalloc.so:$LD_PRELOAD
-export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms: 60000,muzzy_decay_ms:60000"
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libiomp5.so:$LD_PRELOAD
+#export LD_PRELOAD="$LD_PRELOAD"
+#export MALLOC_CONF="oversize_threshold:1,background_thread:true,metadata_thp:auto,dirty_decay_ms: 60000,muzzy_decay_ms:60000"
+#export LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libiomp5.so:$LD_PRELOAD"
 
 #export model_args.use_multiprocessing=False
 
-export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64
+#export LD_LIBRARY_PATH=/usr/local/cuda-12.8/lib64
 
 #Uncomment as needed...
 #and change the webui.sh to point to this file instead of webui-user.sh
@@ -67,7 +67,7 @@ echo "Current User: $USER"
 
 export SAFETENSORS_FAST_GPU=1
 
-export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_mb:512
+export PYTORCH_CUDA_ALLOC_CONF="garbage_collection_threshold:0.9,max_split_size_mb:512,expandable_segments:True"
 
 ##########################################
 
@@ -79,7 +79,7 @@ export PYTORCH_CUDA_ALLOC_CONF=garbage_collection_threshold:0.9,max_split_size_m
 
 echo "loading models from custom path:"
 
-export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models"  --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --lora-dir "$SD_ROOT_PATH/models/Lora" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --xformers --api  --skip-install --loglevel ERROR"
+export COMMANDLINE_ARGS="--controlnet-dir "$SD_ROOT_PATH/models/ControlNet" --controlnet-annotator-models-path "$SD_ROOT_PATH/models/ControlNet/annotator/models"  --gfpgan-dir "$SD_ROOT_PATH/models/GFPGAN" --vae-dir "$SD_ROOT_PATH/models/VAE" --ckpt-dir "$SD_ROOT_PATH/models/" --embeddings-dir "$SD_ROOT_PATH/models/embeddings" --codeformer-models-path "$SD_ROOT_PATH/models/Codeformer" --gfpgan-models-path "$SD_ROOT_PATH/models/GFPGAN" --esrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --bsrgan-models-path "$SD_ROOT_PATH/models/ESRGAN" --realesrgan-models-path "$SD_ROOT_PATH/models/RealESRGAN" --lora-dir "$SD_ROOT_PATH/models/Lora" --no-download-sd-model --port 4433 --theme=dark --precision autocast --xformers --skip-install --api  --loglevel ERROR"
 
 #export COMMANDLINE_ARGS=" --no-download-sd-model --port 4433 --theme=dark --precision autocast --opt-split-attention --medvram --xformers --api --loglevel ERROR"
 

@@ -6,5 +6,5 @@ source ./venv/bin/activate
 
 echo "venv activated"
 
-python --version
+python3.10 --version
 
