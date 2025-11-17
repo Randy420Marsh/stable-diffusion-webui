@@ -1,0 +1,9 @@
+altair==5.4.1
+blendmodes==2022
+pillow==9.5.0
+blis==1.0.1
+numpy==1.25.0
+open-clip-torch==2.20.0
+protobuf==3.20.3
+typing-extensions==4.10.0
+numpy<3.0.0,>=2.0.0
